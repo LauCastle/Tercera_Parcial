@@ -1,6 +1,6 @@
 //Estructura de datos
 //Examen Tercera Parical
-// No realiza la busqueda, pero si los ordena en preorden :D
+//Agregando la función de busqueda
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,26 +48,39 @@ void preorden(struct nodo* nd){
 	}
 }
 
+int lvl=0;
+void buscar(struct nodo* nd, int n){
+	lvl++;
+	if(n==nd->info){
+		printf("El nuemro %d esta en el nivel %d\n",n, lvl);
+	}else if(n > nd->info && nd->hijo_der != NULL){
+		buscar(nd->hijo_der, n);
+	}else if(n < nd->info && nd->hijo_izq != NULL){
+		buscar(nd->hijo_izq, n);
+	}else{
+		printf("El numero %d no se encuentra en el arbol\n", n);
+	}
+}
+
 int main(){
-	int n;
-	struct nodo* raiz=NULL;
-	raiz = nuevoNodo(6);
-	insertarNodo(raiz,5);
-	insertarNodo(raiz,11);
-	insertarNodo(raiz,4);
-	insertarNodo(raiz,8);
-	insertarNodo(raiz,12);
-	insertarNodo(raiz,3);
-	insertarNodo(raiz,9);
-	insertarNodo(raiz,21);
+	int n, r, dato;
+	struct nodo* raiz= NULL;
+
+	printf("Ingresa la raiz de tu arbol: ");
+	scanf("%d",&r);
+	raiz = nuevoNodo(r);
+
+	printf("Ingresa el nodo: ");
+	scanf("%d", &dato);
+	insertarNodo(raiz,dato);
+
 	printf("\nArbol en pre-orden: \n");
 	preorden(raiz);
 	printf("\n");
-	
-	//printf("¿Que numero desea buscar?\n");
-	//scanf("%d",&n);
 
-	//busqueda(raiz,n);
+	printf("Ingrese el numero a buscar: ");
+	scanf("%d",&n);
+	buscar(raiz,n);
 
 	return 0;
 }
