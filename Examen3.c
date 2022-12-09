@@ -63,16 +63,41 @@ void buscar(struct nodo* nd, int n){
 }
 
 int main(){
-	int n, r, dato;
+	//char c;
+	int n, r, dato, dt, c;
+	int i=0;
 	struct nodo* raiz= NULL;
-
+	//para ingresar manualmente los datos del arbol
 	printf("Ingresa la raiz de tu arbol: ");
 	scanf("%d",&r);
 	raiz = nuevoNodo(r);
 
-	printf("Ingresa el nodo: ");
-	scanf("%d", &dato);
-	insertarNodo(raiz,dato);
+	do{
+		printf("Ingresa cuantos nodos: ");
+		scanf("%d",&dt);
+		while(i!=dt){
+			printf("Ingresa el nodo: ");
+			scanf("%d",&dato);
+			insertarNodo(raiz,dato);
+			i++;
+		}
+		printf("Deseas agregar mas nodos? \n");
+		printf("    1.Si      2.No \n");
+		printf(":");
+		scanf("%d",&c);
+		i=0;
+
+		if(c !=1){
+			printf("Arbol terminado\n");
+			break;
+		}
+	}while(1);
+
+
+
+	//printf("Ingresa el nodo: ");
+	//scanf("%d", &dato);
+	//insertarNodo(raiz,dato);
 
 	printf("\nArbol en pre-orden: \n");
 	preorden(raiz);
