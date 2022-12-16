@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+//Para que funcione el menu
 #define TRUE 1
 #define FALSE 0
 
@@ -66,7 +67,7 @@ void postorden(struct nodo* nd){
 	}
 }
 //funcion buscar
-int lvl=0;
+int lvl=0;//para darle el nivel en el arbol
 void buscar(struct nodo* nd, int n){
 	lvl++;
 
@@ -82,13 +83,14 @@ void buscar(struct nodo* nd, int n){
 }
 
 int main(){
+	//declaración de varibales 
 	int opc;
 	char repetir = TRUE;
 	int n, r, dato, dt, c;
 	int i=0;
 	struct nodo* raiz= NULL;
 
-	//Ingresar valores manualmente
+	//Ingresar valores manualmente en el arbol
 	printf("Ingresa la raiz del arbol: ");
 	scanf("%d",&r);
 	raiz = nuevoNodo(r);
@@ -116,7 +118,7 @@ int main(){
 	//Menú de opciones
 	do{
 		//system("clear"); para borrar, pero al hacerlo se borra el arbol ya agregado anteriormentee
-
+		//para evitar el problema de violacion de segmento, no hay que agregar en el menú el pedir valores para el arbol
 		printf("\n---Opciones para el arbol---\n");
 		printf("1.- Buscar un valor dentro del arbol\n");
 		printf("2.- Ordenar en Pre-orden\n");
